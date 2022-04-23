@@ -1,5 +1,8 @@
 https://github.com/pwaller/pyfiglet
 https://pypi.org/project/termcolor/
+http://www.figlet.org/examples.html
+https://www.youtube.com/watch?v=2201B0vGwx8
+https://www.youtube.com/watch?v=zUf1BM1l8MQ
 
 
 

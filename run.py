@@ -5,6 +5,7 @@ from pyfiglet import Figlet
 figlet = Figlet(font="banner3")
 import pyinputplus as pyip
 from termcolor import colored, cprint
+from words import words_list
 
 def main_menu():
     """
@@ -62,13 +63,13 @@ def instructions():
     enter = input("Press enter when you're ready to return to the main menu...")
     main_menu()
 
-# def instructions()
-#     how to play:
-#     alfa bravo charlie
-
+def get_random_word():
+    pass
+def game(lives, word):
+    pass
 # def get_random_word()
 #     """
-#     Called when generating the game, gets a random word from a class list.
+#     Called when generating the game, gets a random word from a list.
 #     """
 
 # def game()
@@ -100,5 +101,6 @@ def instructions():
 #         ||          ||
 #         """)
 
-print(figlet.renderText("HANGMAN"))
-main_menu()
+# print(figlet.renderText("HANGMAN"))
+# main_menu()
+print(words_list)
