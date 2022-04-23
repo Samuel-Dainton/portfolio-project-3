@@ -3,17 +3,28 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 from pyfiglet import Figlet
 figlet = Figlet(font="slant")
-import sys
+import pyinputplus as pyip
 from termcolor import colored, cprint
 
-# def main_menu()
-#     Hangman
-#     1 for start
-#     2 for difficulty
-#     3 to instructions
-#     else please input a number between 1 and 3
+def main_menu():
+    print(figlet.renderText("HANGMAN"))
+    cprint("Welcome to the game.\n", 'red', attrs=['bold'])
+    cprint("""Please chose from one of the following options...\n
+    To start the game, enter 1
+    To change the difficulty, enter 2
+    And to read the instructions, enter 3
+    """)
+    num = pyip.inputInt("Please enter an option:", min=1, max=3)
+    
+    if num == 1:
+        difficulty()
+    if num == 2:
+        difficulty()
+    if num == 3:
+        difficulty()
 
-# def difficulty()
+def difficulty():
+    cprint("Select your difficulty!")
 #     Select your difficulty
 #     1 for easy 10 lives
 #     2 for medium 7 lives
@@ -57,3 +68,5 @@ from termcolor import colored, cprint
 #         L____________/
 #         ||          ||
 #         """)
+
+main_menu()
