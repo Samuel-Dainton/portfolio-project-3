@@ -2,34 +2,46 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 from pyfiglet import Figlet
-figlet = Figlet(font="slant")
+figlet = Figlet(font="banner3")
 import pyinputplus as pyip
 from termcolor import colored, cprint
 
 def main_menu():
-    print(figlet.renderText("HANGMAN"))
-    cprint("Welcome to the game.\n", 'red', attrs=['bold'])
+    """
+    Presents the main menu to the user
+    """
+    
+    cprint("Welcome to the game!\n", "red", attrs=["bold"])
     cprint("""Please chose from one of the following options...\n
     To start the game, enter 1
     To change the difficulty, enter 2
-    And to read the instructions, enter 3
+    Or to read the instructions, enter 3
     """)
     num = pyip.inputInt("Please enter an option:", min=1, max=3)
     
     if num == 1:
-        difficulty()
+        game()
     if num == 2:
         difficulty()
     if num == 3:
-        difficulty()
+        instructions()
 
 def difficulty():
-    cprint("Select your difficulty!")
-#     Select your difficulty
-#     1 for easy 10 lives
-#     2 for medium 7 lives
-#     3 for hard 5 lives
-#     else please input a number between 1 and 3
+    cprint("Select your difficulty!\n", "red", attrs=["bold"])
+    cprint("""Please chose from one of the following options...\n
+    For Easy (10 Lives), enter 1
+    For Medium (7 Lives), enter 2
+    Or for Hard (5 Lives), enter 3
+    """)
+    num = pyip.inputInt("Please enter an option:", min=1, max=3)
+    
+    if num == 1:
+        lives = 10
+    if num == 2:
+        lives = 7
+    if num == 3:
+        lives = 51
+    main_menu()
 
 # def instructions()
 #     how to play:
@@ -55,7 +67,7 @@ def difficulty():
 
 # print(figlet.renderText("Hello World!"))
 
-# cprint("Attention!", 'red', attrs=['bold'], file=sys.stderr)
+# cprint("Attention!", "red", attrs=["bold"], file=sys.stderr)
 
 # print("""
 #         ___________
@@ -69,4 +81,5 @@ def difficulty():
 #         ||          ||
 #         """)
 
+print(figlet.renderText("HANGMAN"))
 main_menu()
