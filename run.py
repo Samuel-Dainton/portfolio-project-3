@@ -11,7 +11,7 @@ def main_menu():
     Presents the main menu to the user
     """
     
-    cprint("Welcome to the game!\n", "red", attrs=["bold"])
+    cprint("\nWelcome to the game!\n", "red", attrs=["bold"])
     cprint("""Please chose from one of the following options...\n
     To start the game, enter 1
     To change the difficulty, enter 2
@@ -27,7 +27,7 @@ def main_menu():
         instructions()
 
 def difficulty():
-    cprint("Select your difficulty!\n", "red", attrs=["bold"])
+    cprint("\nSelect your difficulty!\n", "red", attrs=["bold"])
     cprint("""Please chose from one of the following options...\n
     For Easy (10 Lives), enter 1
     For Medium (7 Lives), enter 2
@@ -41,6 +41,25 @@ def difficulty():
         lives = 7
     if num == 3:
         lives = 51
+    main_menu()
+
+def instructions():
+    cprint("\nInstructions:", "red", attrs=["bold"])
+    cprint("""
+    In the game Hangman, you must attempt to guess a hidden word by
+    entering single letters at a time.
+
+    Each letter of the word will start out marked as an empty underlined
+    spot. If you guess correctly, the letter will appear where it belongs
+    in the word and once you can fill in the rest of the blanks correctly,
+    you win!
+
+    However, each time you guess an incorrect letter another part of your
+    character will be added to the gallows. 
+    Once you're out of guesses you will lose! So make sure to think about
+    your guesses and maybe start with the letter O, as it's the most 
+    common letter in the dictionary. Good luck!\n""")
+    enter = input("Press enter when you're ready to return to the main menu...")
     main_menu()
 
 # def instructions()
