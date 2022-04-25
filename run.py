@@ -37,8 +37,8 @@ def difficulty():
     Or for Hard (5 Lives), enter 3
     """)
     num = pyip.inputInt("Please enter an option:", min=1, max=3)
+    
     global lives
-
     if num == 1:
         lives = 10
         diff = "Easy"
@@ -74,7 +74,7 @@ def instructions():
     
 def game():
     word = random.choice(words_list)
-    hidden_word = "_ " * len(word)
+    hidden_word = "_" * len(word)
     guesses = []
     life = lives
     word_guessed = False
@@ -100,13 +100,13 @@ def game():
                 print(f"You have {life} guesses remaining!")
                 print(f"Letters you have guessed: {guesses}")
             else:
-                
                 guesses.append(guess)
                 word_as_list = list(hidden_word)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
-                  word_as_list[index] = guess
-                hidden_word = "".join(word_as_list)
+                    word_as_list[index] = guess
+                    hidden_word = "".join(word_as_list)
+
                 if "_" not in hidden_word:
                     word_guessed = True
                 print(man[life])
@@ -119,27 +119,10 @@ def game():
        print("Congratulations! You guessed the word correctly.")
     else:
         print(f"Sorry! You ran out of tries. The word  was {word}, would you like to play again?")
-    
-    
 
-# def get_random_word()
-#     """
-#     Called when generating the game, gets a random word from a list.
-#     """
-
-# def game()
-#     Good luck! You have {x} guesses to find the word. Try not to get hung!
-#     print hang_man
-#     print _ _ _ _ _ _ _
-#     print {guessed letters}
-   
-#     while _ != 0 and lives > 0  What letter will you guess? input()
-#     else please input a single letter or you already guessed {x}, try a different letter!
-#     if _ = 0 game_win
-#     else game_lose
-
-# _______________________________________________
 def main():
+    global lives
+    lives = 7
     main_menu()
     
     
