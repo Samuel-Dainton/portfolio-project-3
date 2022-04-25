@@ -39,10 +39,15 @@ def difficulty():
     
     if num == 1:
         lives = 10
+        diff = "Easy"
     if num == 2:
         lives = 7
+        diff = "Medium"
     if num == 3:
-        lives = 51
+        lives = 5
+        diff = "Hard"
+    
+    cprint(f"\nThe difficulty has been set to {diff}...\nReturning to Main Menu", "green", attrs=["bold"])
     main_menu()
 
 def instructions():
@@ -62,14 +67,17 @@ def instructions():
     your guesses and maybe start with the letter O, as it's the most 
     common letter in the dictionary. Good luck!\n""")
     enter = input("Press enter when you're ready to return to the main menu...")
+    cprint(f"\nReturning to Main Menu", "green", attrs=["bold"])
     main_menu()
-
-def get_random_word():
-    word = random.choice(words_list)
-    print(word)
     
-def game(lives, word):
-    pass
+def game():
+    word = random.choice(words_list)
+    hidden_word = "_ " * len(word)
+    print(word)
+    print(hidden_word)
+    print(lives)
+    guesses = []
+
 # def get_random_word()
 #     """
 #     Called when generating the game, gets a random word from a list.
@@ -105,5 +113,5 @@ def game(lives, word):
 #         """)
 
 # print(figlet.renderText("HANGMAN"))
-# main_menu()
-get_random_word()
+lives = 7
+main_menu()
