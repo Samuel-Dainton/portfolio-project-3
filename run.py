@@ -76,6 +76,7 @@ def game():
     word = random.choice(words_list)
     hidden_word = "_" * len(word)
     guesses = []
+    guessed_words = []
     life = lives
     word_guessed = False
 
@@ -87,20 +88,22 @@ def game():
 
     while life > 0 and not word_guessed:
         guess = pyip.inputStr("Please guess a letter:").lower()
-        
-        if len(guess) == 1 and guess.isalpha():
+        """
+        Checks if the user entered one of the correct letters.
+        """
+        if len(guess) == 1:
             if guess in guesses:
                 print(f"You have already guessed the letter {guess}, try again.")
             elif guess not in word :
                 life -= 1
-                guesses.append(guess)
+                guesses.append(guess.upper())
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Sorry! {guess} is not in the word.")
+                print(f"Sorry! {guess.upper()} is not in the word.")
                 print(f"You have {life} guesses remaining!")
                 print(f"Letters you have guessed: {guesses}")
             else:
-                guesses.append(guess)
+                guesses.append(guess.upper())
                 word_as_list = list(hidden_word)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
@@ -111,13 +114,35 @@ def game():
                     word_guessed = True
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Good guess! {guess} is in the word.")
+                print(f"Good guess! {guess.upper()} is in the word.")
                 print(f"You have {life} guesses remaining!")
                 print(f"Letters you have guessed: {guesses}")
 
+        """
+        Checks if the user entered the correct word as a whole.
+        """
+        if len(guess) == len(word):
+            if guess in guessed_words:
+                print(f"You have already guessed the word {guess}")
+            elif guess != word:
+                life -= 1
+                guessed_words.append(guess.upper())
+                print(man[life])
+                print(hidden_word.upper())
+                print(f"Sorry! {guess.upper()} is not the word.")
+                print(f"You have {life} guesses remaining!")
+                print(f"Letters you have guessed: {guesses}")
+                print(f"Words you have guessed: {guessed_words}")
+            else:
+                word_guessed = True
+
     if word_guessed:
-       print("Congratulations! You guessed the word correctly.")
+        print(man[life])
+        print(word.upper())
+        print("Congratulations! You guessed the word correctly.")
     else:
+        print(man[life])
+        print(hidden_word.upper())
         print(f"Sorry! You ran out of tries. The word  was {word}, would you like to play again?")
 
 def main():
