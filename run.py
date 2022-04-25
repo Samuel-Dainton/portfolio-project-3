@@ -50,6 +50,7 @@ def difficulty():
     
     cprint(f"\nThe difficulty has been set to {diff}...\nReturning to Main Menu", "green", attrs=["bold"])
     main_menu()
+    return lives
 
 def instructions():
     cprint("\nInstructions:", "red", attrs=["bold"])
@@ -74,13 +75,14 @@ def instructions():
 def game():
     word = random.choice(words_list)
     hidden_word = "_ " * len(word)
+    lives = difficulty()
 
     cprint("\nLets Play!\n", "red", attrs=["bold"])
 
     print(word)
     print(hidden_word)
     print(lives)
-    print(man[1])
+    print(man[lives])
     guesses = []
 
 # def get_random_word()
@@ -101,22 +103,6 @@ def game():
 
 # _______________________________________________
 
-# print(figlet.renderText("Hello World!"))
+print(figlet.renderText("HANGMAN"))
 
-# cprint("Attention!", "red", attrs=["bold"], file=sys.stderr)
-
-# print("""
-#         ___________
-#         | /       |
-#         ||        O
-#         ||       /|\\
-#         ||________|____
-#         ||       / \\   /|
-#         | \\           /
-#         L____________/
-#         ||          ||
-#         """)
-
-# print(figlet.renderText("HANGMAN"))
-lives = 7
 main_menu()
