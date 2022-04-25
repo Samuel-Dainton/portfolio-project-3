@@ -75,15 +75,52 @@ def instructions():
 def game():
     word = random.choice(words_list)
     hidden_word = "_ " * len(word)
-    
+    guesses = []
+    life = lives
+    word_guessed = False
 
     cprint("\nLets Play!\n", "red", attrs=["bold"])
 
-    print(word)
+    print(man[life])
     print(hidden_word)
-    print(lives)
-    print(man[lives])
-    guesses = []
+    print(f"You have {life} guesses remaining!")
+
+    while life > 0 and not word_guessed:
+        guess = pyip.inputStr("Please guess a letter:").lower()
+        
+        if len(guess) == 1 and guess.isalpha():
+            if guess in guesses:
+                print(f"You have already guessed the letter {guess}, try again.")
+            elif guess not in word :
+                life -= 1
+                guesses.append(guess)
+                print(man[life])
+                print(hidden_word.upper())
+                print(f"Sorry! {guess} is not in the word.")
+                print(f"You have {life} guesses remaining!")
+                print(f"Letters you have guessed: {guesses}")
+            else:
+                
+                guesses.append(guess)
+                word_as_list = list(hidden_word)
+                indices = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indices:
+                  word_as_list[index] = guess
+                hidden_word = "".join(word_as_list)
+                if "_" not in hidden_word:
+                    word_guessed = True
+                print(man[life])
+                print(hidden_word.upper())
+                print(f"Good guess! {guess} is in the word.")
+                print(f"You have {life} guesses remaining!")
+                print(f"Letters you have guessed: {guesses}")
+
+    if word_guessed:
+       print("Congratulations! You guessed the word correctly.")
+    else:
+        print(f"Sorry! You ran out of tries. The word  was {word}, would you like to play again?")
+    
+    
 
 # def get_random_word()
 #     """
