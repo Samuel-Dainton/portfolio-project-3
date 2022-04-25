@@ -6,6 +6,7 @@ figlet = Figlet(font="banner3")
 import pyinputplus as pyip
 from termcolor import colored, cprint
 from words import words_list
+import random
 
 def main_menu():
     """
@@ -64,7 +65,9 @@ def instructions():
     main_menu()
 
 def get_random_word():
-    pass
+    word = random.choice(words_list)
+    print(word)
+    
 def game(lives, word):
     pass
 # def get_random_word()
@@ -103,4 +106,4 @@ def game(lives, word):
 
 # print(figlet.renderText("HANGMAN"))
 # main_menu()
-print(words_list)
+get_random_word()

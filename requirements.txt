@@ -1,1 +1,5 @@
-# Your requirements go here
+pyfiglet==0.8.post1
+PyInputPlus==0.2.12
+PySimpleValidate==0.2.12
+stdiomask==0.0.6
+termcolor==1.1.0
