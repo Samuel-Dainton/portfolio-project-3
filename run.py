@@ -81,6 +81,8 @@ def game():
     word_guessed = False
 
     cprint("\nLets Play!\n", "red", attrs=["bold"])
+    cprint("If you want to quit at any point, you can enter 'exit' to go to the main menu.", "green", attrs=["bold"])
+    cprint("Or 'restart' to restart the game with a new word.", "green", attrs=["bold"])
 
     print(man[life])
     print(hidden_word)
@@ -100,8 +102,8 @@ def game():
                 print(man[life])
                 print(hidden_word.upper())
                 print(f"Sorry! {guess.upper()} is not in the word.")
-                print(f"You have {life} guesses remaining!")
-                print(f"Letters you have guessed: {guesses}")
+                print(f"You have {life} guesses remaining.")
+                print(f"Letters you have guessed: {sorted(guesses)}")
             else:
                 guesses.append(guess.upper())
                 word_as_list = list(hidden_word)
@@ -112,11 +114,12 @@ def game():
 
                 if "_" not in hidden_word:
                     word_guessed = True
+
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Good guess! {guess.upper()} is in the word.")
-                print(f"You have {life} guesses remaining!")
-                print(f"Letters you have guessed: {guesses}")
+                print(f"Good guess! {guess.upper()} is in the word.\n")
+                print(f"You have {life} guesses remaining.")
+                print(f"Letters you have guessed: {guesses}\n")
         
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
@@ -126,12 +129,18 @@ def game():
                 guessed_words.append(guess.upper())
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Sorry! {guess.upper()} is not the word.")
+                print(f"Sorry! {guess.upper()} is not the word.\n")
                 print(f"You have {life} guesses remaining!")
-                print(f"Letters you have guessed: {guesses}")
-                print(f"Words you have guessed: {guessed_words}")
+                print(f"Letters you have guessed: {sorted(guesses)}")
+                print(f"Words you have guessed: {guessed_words}\n")
             else:
                 word_guessed = True
+
+        elif guess == "exit":
+            main_menu()
+
+        elif guess == "restart":
+            game()
 
         else:
             cprint(f"\nSorry! You entered {guess}, please enter either a letter or a single word.\n", "red", attrs=["bold"])
@@ -149,7 +158,6 @@ def main():
     global lives
     lives = 7
     main_menu()
-    
     
 print(figlet.renderText("HANGMAN"))
 main()
