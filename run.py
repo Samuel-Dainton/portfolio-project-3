@@ -91,7 +91,7 @@ def game():
         """
         Checks if the user entered one of the correct letters.
         """
-        if len(guess) == 1:
+        if len(guess) == 1 and guess.isalpha():
             if guess in guesses:
                 print(f"You have already guessed the letter {guess}, try again.")
             elif guess not in word :
@@ -117,11 +117,8 @@ def game():
                 print(f"Good guess! {guess.upper()} is in the word.")
                 print(f"You have {life} guesses remaining!")
                 print(f"Letters you have guessed: {guesses}")
-
-        """
-        Checks if the user entered the correct word as a whole.
-        """
-        if len(guess) == len(word):
+        
+        elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
                 print(f"You have already guessed the word {guess}")
             elif guess != word:
@@ -135,6 +132,9 @@ def game():
                 print(f"Words you have guessed: {guessed_words}")
             else:
                 word_guessed = True
+
+        else:
+            cprint(f"\nSorry! You entered {guess}, please enter either a letter or a single word.\n", "red", attrs=["bold"])
 
     if word_guessed:
         print(man[life])
