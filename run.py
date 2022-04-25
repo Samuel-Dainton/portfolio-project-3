@@ -37,7 +37,8 @@ def difficulty():
     Or for Hard (5 Lives), enter 3
     """)
     num = pyip.inputInt("Please enter an option:", min=1, max=3)
-    
+    global lives
+
     if num == 1:
         lives = 10
         diff = "Easy"
@@ -50,7 +51,6 @@ def difficulty():
     
     cprint(f"\nThe difficulty has been set to {diff}...\nReturning to Main Menu", "green", attrs=["bold"])
     main_menu()
-    return lives
 
 def instructions():
     cprint("\nInstructions:", "red", attrs=["bold"])
@@ -75,7 +75,7 @@ def instructions():
 def game():
     word = random.choice(words_list)
     hidden_word = "_ " * len(word)
-    lives = difficulty()
+    
 
     cprint("\nLets Play!\n", "red", attrs=["bold"])
 
@@ -102,7 +102,9 @@ def game():
 #     else game_lose
 
 # _______________________________________________
-
+def main():
+    main_menu()
+    
+    
 print(figlet.renderText("HANGMAN"))
-
-main_menu()
+main()

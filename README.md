@@ -7,6 +7,8 @@ https://pypi.org/project/PyInputPlus/
 https://www.hangmanwords.com/words
 https://commaquote.azurewebsites.net/
 
+Redefining name 'lives' from outer scope.
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome Samuel Dainton,
