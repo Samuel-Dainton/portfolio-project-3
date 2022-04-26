@@ -150,9 +150,9 @@ def game():
                 word_guessed = True
                 
             """Triggers when the user wants to exit or restart the game."""
-        elif guess == "exit":
+        elif guess == "EXIT":
             main_menu()
-        elif guess == "restart":
+        elif guess == "RESTART":
             game()
         elif len(guess) >1 and guess is not len(word):
             cprint(f"\nSorry! You entered {guess} which isn't the same length as the word you need to guess.\n", "red", attrs=["bold"])
