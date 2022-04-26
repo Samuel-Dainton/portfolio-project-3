@@ -93,19 +93,18 @@ def game():
     cprint("\nLets Play!\n", "red", attrs=["bold"])
     cprint("If you want to quit at any point, you can enter 'exit' to go to the main menu.", "green", attrs=["bold"])
     cprint("Or 'restart' to restart the game with a new word.", "green", attrs=["bold"])
-    print(man[life])
-    print(hidden_word)
-    print(f"You have {life} guesses remaining!")
     
     """Used to print the games display."""
     def print_game():
         print(man[life])
-        print(hidden_word)
+        print(f"The word is: {hidden_word}")
         print(f"\nYou have {life} guesses remaining.")
         if guesses:
             print(f"Letters you have guessed: {sorted(guesses)}")
         if guessed_words:
             print(f"Words you have guessed: {guessed_words}")
+
+    print_game()
 
     while life > 0 and not word_guessed:
         guess = pyip.inputStr("Please guess a letter or a word:").upper()
