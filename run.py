@@ -1,15 +1,15 @@
 from pyfiglet import Figlet
-figlet = Figlet(font="banner3")
 import pyinputplus as pyip
 from termcolor import colored, cprint
 from words import words_list
 from man import man
 import random
+figlet = Figlet(font="banner3")
 
 """
 Presents the main menu to the user, allowing them to chose one of three options.
 """
-def main_menu(): 
+def main_menu():
     cprint("Welcome to the game!\n", "red", attrs=["bold"])
     cprint("""Please chose from one of the following options...\n
     To start the game, enter 1
@@ -17,7 +17,6 @@ def main_menu():
     Or to read the instructions, enter 3
     """)
     num = pyip.inputInt("Please enter an option:", min=1, max=3)
-    
     if num == 1:
         cprint(f"\nLoading the game...", "green", attrs=["bold"])
         game()
@@ -101,15 +100,15 @@ def game():
     """Used to print the games display."""
     def print_game():
         print(man[life])
-        print(hidden_word.upper())
+        print(hidden_word)
         print(f"\nYou have {life} guesses remaining.")
         if guesses:
-            print(f"Letters you have guessed: {guesses}")
+            print(f"Letters you have guessed: {sorted(guesses)}")
         if guessed_words:
             print(f"Words you have guessed: {guessed_words}")
 
     while life > 0 and not word_guessed:
-        guess = pyip.inputStr("Please guess a letter or a word:").lower()
+        guess = pyip.inputStr("Please guess a letter or a word:").upper()
 
         """Checks if the user entered one of the correct letters."""
         if len(guess) == 1 and guess.isalpha():
@@ -117,11 +116,11 @@ def game():
                 cprint(f"You have already guessed the letter {guess}, try again.", "red", attrs=["bold"])
             elif guess not in word:
                 life -= 1
-                guesses.append(guess.upper())
+                guesses.append(guess)
                 print_game()
-                cprint(f"Sorry! {guess.upper()} is not in the word.", "green", attrs=["bold"])
+                cprint(f"Sorry! {guess} is not in the word.", "green", attrs=["bold"])
             else:
-                guesses.append(guess.upper())
+                guesses.append(guess)
 
                 """Turns the hidden_word into a list using indexing and list comprehension."""
                 word_as_list = list(hidden_word)
@@ -137,7 +136,7 @@ def game():
                     word_guessed = True
 
                 print_game()
-                cprint(f"Good guess! {guess.upper()} is in the word.", "green", attrs=["bold"])
+                cprint(f"Good guess! {guess} is in the word.", "green", attrs=["bold"])
         
             """Checks if the user entered the correct word."""
         elif len(guess) == len(word) and guess.isalpha():
@@ -145,9 +144,9 @@ def game():
                 cprint(f"You have already guessed the word {guess}", "red", attrs=["bold"])
             elif guess != word:
                 life -= 1
-                guessed_words.append(guess.upper())
+                guessed_words.append(guess)
                 print_game()
-                cprint(f"Sorry! {guess.upper()} is not the word.", "green", attrs=["bold"])
+                cprint(f"Sorry! {guess} is not the word.", "green", attrs=["bold"])
             else:
                 word_guessed = True
                 
@@ -164,12 +163,12 @@ def game():
     """Prints a message and triggers the restart function if the game is won, else if the game is lost."""
     if word_guessed:
         print(man[life])
-        print(word.upper())
-        cprint("Congratulations! You guessed the word correctly.", "green", attrs=["bold"])
+        print(word)
+        cprint(f"Congratulations! You guessed the word {word} correctly.", "green", attrs=["bold"])
         restart()
     else:
         print(man[life])
-        print(hidden_word.upper())
+        print(hidden_word)
         cprint(f"Sorry! You ran out of tries. The word was, {word}.", "red", attrs=["bold"])
         restart()
 
