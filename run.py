@@ -10,7 +10,7 @@ import random
 Presents the main menu to the user, allowing them to chose one of three options.
 """
 def main_menu(): 
-    cprint("\nWelcome to the game!\n", "red", attrs=["bold"])
+    cprint("Welcome to the game!\n", "red", attrs=["bold"])
     cprint("""Please chose from one of the following options...\n
     To start the game, enter 1
     To change the difficulty, enter 2
@@ -19,10 +19,13 @@ def main_menu():
     num = pyip.inputInt("Please enter an option:", min=1, max=3)
     
     if num == 1:
+        cprint(f"\nLoading the game...", "green", attrs=["bold"])
         game()
     if num == 2:
+        cprint(f"\nLoading difficulty options...", "green", attrs=["bold"])
         difficulty()
     if num == 3:
+        cprint(f"\nLoading instructions page...", "green", attrs=["bold"])
         instructions()
 
 """
@@ -39,16 +42,16 @@ def difficulty():
     
     global lives
     if num == 1:
-        lives = 10
+        lives = 12
         diff = "Easy"
     if num == 2:
-        lives = 7
+        lives = 10
         diff = "Medium"
     if num == 3:
-        lives = 5
+        lives = 7
         diff = "Hard"
     
-    cprint(f"\nThe difficulty has been set to {diff}...\nReturning to Main Menu", "green", attrs=["bold"])
+    cprint(f"\nThe difficulty has been set to {diff}.\nReturning to Main Menu...\n", "green", attrs=["bold"])
     main_menu()
 
 """
@@ -58,20 +61,23 @@ def instructions():
     cprint("\nInstructions:", "red", attrs=["bold"])
     cprint("""
     In the game Hangman, you must attempt to guess a hidden word by
-    entering single letters at a time.
+    entering single letters that you think might be in the word, or
+    the whole word.
 
     Each letter of the word will start out marked as an empty underlined
-    spot. If you guess correctly, the letter will appear where it belongs
-    in the word and once you can fill in the rest of the blanks correctly,
-    you win!
+    spot. If you guess a letter correctly, the letter will appear where 
+    it belongs in the word and once you can fill in the rest of the blanks
+    correctly or guess the whole word, you win!
 
     However, each time you guess an incorrect letter another part of your
-    character will be added to the gallows. 
-    Once you're out of guesses you will lose! So make sure to think about
-    your guesses and maybe start with the letter O, as it's the most 
-    common letter in the dictionary. Good luck!\n""")
+    character will be added to the gallows. Guessing a whole word only
+    reduces your attempts by 1, so it could be usefull in eliminating
+    a number of letters at once.
+
+    Once you're out of guesses, you will lose! So make sure to think about
+    your guesses. Good luck!\n""")
     enter = input("Press enter when you're ready to return to the main menu...")
-    cprint(f"\nReturning to Main Menu", "green", attrs=["bold"])
+    cprint(f"\nReturning to Main Menu...\n", "green", attrs=["bold"])
     main_menu()
 
 """
@@ -93,7 +99,7 @@ def game():
     print(f"You have {life} guesses remaining!")
 
     while life > 0 and not word_guessed:
-        guess = pyip.inputStr("Please guess a letter:").lower()
+        guess = pyip.inputStr("Please guess a letter or a word:").lower()
 
         """Checks if the user entered one of the correct letters."""
         if len(guess) == 1 and guess.isalpha():
@@ -127,7 +133,10 @@ def game():
                 print(hidden_word.upper())
                 print(f"Good guess! {guess.upper()} is in the word.\n")
                 print(f"You have {life} guesses remaining.")
-                print(f"Letters you have guessed: {guesses}\n")
+                if guesses:
+                    print(f"Letters you have guessed: {guesses}\n")
+                if guessed_words:
+                    print(f"Words you have guessed: {guessed_words}\n")
         
             """Checks if the user entered the correct word."""
         elif len(guess) == len(word) and guess.isalpha():
@@ -140,8 +149,10 @@ def game():
                 print(hidden_word.upper())
                 print(f"Sorry! {guess.upper()} is not the word.\n")
                 print(f"You have {life} guesses remaining!")
-                print(f"Letters you have guessed: {sorted(guesses)}")
-                print(f"Words you have guessed: {guessed_words}\n")
+                if guesses:
+                    print(f"Letters you have guessed: {guesses}\n")
+                if guessed_words:
+                    print(f"Words you have guessed: {guessed_words}\n")
             else:
                 word_guessed = True
                 
