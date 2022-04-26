@@ -104,15 +104,15 @@ def game():
         """Checks if the user entered one of the correct letters."""
         if len(guess) == 1 and guess.isalpha():
             if guess in guesses:
-                print(f"You have already guessed the letter {guess}, try again.")
+                cprint(f"You have already guessed the letter {guess}, try again.", "red", attrs=["bold"])
             elif guess not in word:
                 life -= 1
                 guesses.append(guess.upper())
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Sorry! {guess.upper()} is not in the word.")
-                print(f"You have {life} guesses remaining.")
+                print(f"\nYou have {life} guesses remaining.")
                 print(f"Letters you have guessed: {sorted(guesses)}")
+                cprint(f"Sorry! {guess.upper()} is not in the word.", "green", attrs=["bold"])
             else:
                 guesses.append(guess.upper())
 
@@ -131,28 +131,28 @@ def game():
 
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Good guess! {guess.upper()} is in the word.\n")
-                print(f"You have {life} guesses remaining.")
+                print(f"\nYou have {life} guesses remaining.")
                 if guesses:
-                    print(f"Letters you have guessed: {guesses}\n")
+                    print(f"Letters you have guessed: {guesses}")
                 if guessed_words:
-                    print(f"Words you have guessed: {guessed_words}\n")
+                    print(f"Words you have guessed: {guessed_words}")
+                cprint(f"Good guess! {guess.upper()} is in the word.", "green", attrs=["bold"])
         
             """Checks if the user entered the correct word."""
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
-                print(f"You have already guessed the word {guess}")
+                cprint(f"You have already guessed the word {guess}", "red", attrs=["bold"])
             elif guess != word:
                 life -= 1
                 guessed_words.append(guess.upper())
                 print(man[life])
                 print(hidden_word.upper())
-                print(f"Sorry! {guess.upper()} is not the word.\n")
-                print(f"You have {life} guesses remaining!")
+                print(f"\nYou have {life} guesses remaining!")
                 if guesses:
-                    print(f"Letters you have guessed: {guesses}\n")
+                    print(f"Letters you have guessed: {guesses}")
                 if guessed_words:
-                    print(f"Words you have guessed: {guessed_words}\n")
+                    print(f"Words you have guessed: {guessed_words}")
+                cprint(f"Sorry! {guess.upper()} is not the word.", "green", attrs=["bold"])
             else:
                 word_guessed = True
                 
@@ -161,7 +161,8 @@ def game():
             main_menu()
         elif guess == "restart":
             game()
-
+        elif len(guess) >1 and guess is not len(word):
+            cprint(f"\nSorry! You entered {guess} which isn't the same length as the word you need to guess.\n", "red", attrs=["bold"])
         else:
             cprint(f"\nSorry! You entered {guess}, please enter either a letter or a single word.\n", "red", attrs=["bold"])
     
@@ -176,6 +177,9 @@ def game():
         print(hidden_word.upper())
         cprint(f"Sorry! You ran out of tries. The word was, {word}.", "red", attrs=["bold"])
         restart()
+
+def print_game():
+    pass
 
 """
 Prompted when the game is won or lost to let the user decide what they would like to do next.
