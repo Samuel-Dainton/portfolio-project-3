@@ -97,6 +97,16 @@ def game():
     print(man[life])
     print(hidden_word)
     print(f"You have {life} guesses remaining!")
+    
+    """Used to print the games display."""
+    def print_game():
+        print(man[life])
+        print(hidden_word.upper())
+        print(f"\nYou have {life} guesses remaining.")
+        if guesses:
+            print(f"Letters you have guessed: {guesses}")
+        if guessed_words:
+            print(f"Words you have guessed: {guessed_words}")
 
     while life > 0 and not word_guessed:
         guess = pyip.inputStr("Please guess a letter or a word:").lower()
@@ -108,10 +118,7 @@ def game():
             elif guess not in word:
                 life -= 1
                 guesses.append(guess.upper())
-                print(man[life])
-                print(hidden_word.upper())
-                print(f"\nYou have {life} guesses remaining.")
-                print(f"Letters you have guessed: {sorted(guesses)}")
+                print_game()
                 cprint(f"Sorry! {guess.upper()} is not in the word.", "green", attrs=["bold"])
             else:
                 guesses.append(guess.upper())
@@ -129,13 +136,7 @@ def game():
                 if "_" not in hidden_word:
                     word_guessed = True
 
-                print(man[life])
-                print(hidden_word.upper())
-                print(f"\nYou have {life} guesses remaining.")
-                if guesses:
-                    print(f"Letters you have guessed: {guesses}")
-                if guessed_words:
-                    print(f"Words you have guessed: {guessed_words}")
+                print_game()
                 cprint(f"Good guess! {guess.upper()} is in the word.", "green", attrs=["bold"])
         
             """Checks if the user entered the correct word."""
@@ -145,13 +146,7 @@ def game():
             elif guess != word:
                 life -= 1
                 guessed_words.append(guess.upper())
-                print(man[life])
-                print(hidden_word.upper())
-                print(f"\nYou have {life} guesses remaining!")
-                if guesses:
-                    print(f"Letters you have guessed: {guesses}")
-                if guessed_words:
-                    print(f"Words you have guessed: {guessed_words}")
+                print_game()
                 cprint(f"Sorry! {guess.upper()} is not the word.", "green", attrs=["bold"])
             else:
                 word_guessed = True
