@@ -155,7 +155,7 @@ def game():
         elif guess == "RESTART":
             game()
         elif len(guess) >1 and guess is not len(word):
-            cprint(f"\nSorry! You entered {guess} which isn't the same length as the word you need to guess.\n", "red", attrs=["bold"])
+            cprint(f"\nSorry! You entered {guess} which isn't the same length\nas the word you need to guess.\n", "red", attrs=["bold"])
         else:
             cprint(f"\nSorry! You entered {guess}, please enter either a letter or a single word.\n", "red", attrs=["bold"])
     
