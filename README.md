@@ -9,7 +9,7 @@ The game itself starts by presenting the user with a board space that will be us
 When the user makes an entry the program checks for multiple things that the user could have input.
 * These include:
     * Is it a letter?
-    * Is it a word and ss it equal to the length of the hidden word?
+    * Is it a word and is it equal to the length of the hidden word?
     * Is it one of the key words, exit or restart?
     * Or did the user enter something else?
 All of these options provide appropriate feedback to guide the user in their entries. The first two take the questions a step further to check if the users entry was correct, either one of the letters in the word or the whole word.
@@ -143,8 +143,13 @@ I'd like to give thanks to [Afred Khan](https://github.com/afred-khan/Hangman) a
 ### Further Learning
  
 [Video that demonstrates the use of PyInputPlus](https://www.youtube.com/watch?v=2201B0vGwx8)
+
 [List of various abilities of PyFiglet](http://www.figlet.org/examples.html)
+
 [Video that demonstrates the use of PyFiglet](https://www.youtube.com/watch?v=zUf1BM1l8MQ)
+
 [A list of hangman words](https://www.hangmanwords.com/words)
+
 [A simple tool for adding commas and quotes to lists of words](https://commaquote.azurewebsites.net/)
+
 https://www.w3schools.com/python/ref_func_enumerate.asp
