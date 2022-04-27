@@ -49,9 +49,9 @@ I feel that my project ended up using this code nearly exactly as expected but w
 
 After looking at a number of projects of this type, there are a few factors that seem to contribute to extra code and clutter. The first is storing large strings of ASCII graphics to be printed out in the terminal. The second is validating user input for basic interactions through the terminal. For this reason I have used the following libraries as part of my project.
 
-* [Pyfiglet](https://github.com/pwaller/pyfiglet) - This library allows you to generate ASCII titles and text on the fly. You call the library on any piece of text and a string is returned which generates text effects when printed out to the terminal. For example, the word 'Dashboard' is rendered like this: <br>
-![dashboardtitle](https://github.com/neil314159/portfolio-project-3/blob/main/docs/dashboardtitle.png)
-* [PyInputPlus](https://pypi.org/project/PyInputPlus/) - Designed to handle user input validation, this library lets you offer a number of different prompts for menus, yes/no questions, integers etc. You can restrict the range of acceptable data and make sure that user data is sanitised before processing it in your program.
+* [Pyfiglet](https://github.com/pwaller/pyfiglet) - This library allows you to generate ASCII titles and text with little effort. You call the library on any piece of text and a string is returned which generates text effects when printed out to the terminal.
+
+* [PyInputPlus](https://pypi.org/project/PyInputPlus/) - Designed to handle user input validation, this library lets you offer a number of different prompts for menus, yes/no questions, integers etc. I used this for my inputs that would only accept integer values between 1 and 3 to quickly eliminate a lot of other other incorrect inputs that a user could enter, but didn't use it for the main game where I wanted a lot of different responses for numerous types of inputs the user could make.
 
 Other libraries used include:
 * [Termcolor](https://pypi.org/project/termcolor/) allows the use of colours in text output on the terminal. This was used to highlight menu options and make the interface more visually appealing.
@@ -66,6 +66,10 @@ Other libraries used include:
 ### Solved Bugs
 
 The only real struggle I ran into when making this code was trying to set the lives variable across different functions. It needed to be pre-set so that the game could start without the user needing to select the difficulty first. And it also needed to be set before the main menu so that it didn't get overrridden when going from the difficulty select back to the main menu. For this project I chose to make lives a global variable where necessary so that it could be accessed in the game function from both the preset value in the main function and the user selection in the difficulty function.
+
+### Unsolves Bugs
+
+When entering word and letter guesses the user can also input spaces and tabs for example (space)A or (tab)(tab)WORD(tab) and these will be accepted as valid inputs. For the purpose of this project however this does not affect anything as the game still appears to function correctly, even registering the inputs as single words or the correct length of the hidden word with or without spaces and tabs, so I'm content on not attempting to fix it.
 
 ## Validator Testing
 

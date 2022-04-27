@@ -163,7 +163,7 @@ def game():
     if word_guessed:
         print(man[life])
         print(word)
-        cprint(f"Congratulations! You guessed the word {word} correctly.", "green", attrs=["bold"])
+        cprint(f"\nCongratulations! You guessed the word {word} correctly.", "green", attrs=["bold"])
         restart()
     else:
         print(man[life])
