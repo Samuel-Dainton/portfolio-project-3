@@ -16,7 +16,7 @@ def main_menu():
     To change the difficulty, enter 2
     Or to read the instructions, enter 3
     """)
-    num = pyip.inputInt("Please enter an option:", min=1, max=3)
+    num = pyip.inputInt("Please enter an option:\n", min=1, max=3)
     if num == 1:
         cprint(f"\nLoading the game...", "green", attrs=["bold"])
         game()
@@ -37,7 +37,7 @@ def difficulty():
     For Medium (7 Lives), enter 2
     Or for Hard (5 Lives), enter 3
     """)
-    num = pyip.inputInt("Please enter an option:", min=1, max=3)
+    num = pyip.inputInt("Please enter an option:\n", min=1, max=3)
     
     global lives
     if num == 1:
@@ -75,7 +75,7 @@ def instructions():
 
     Once you're out of guesses, you will lose! So make sure to think about
     your guesses. Good luck!\n""")
-    enter = input("Press enter when you're ready to return to the main menu...")
+    enter = input("Press enter when you're ready to return to the main menu...\n")
     cprint(f"\nReturning to Main Menu...\n", "green", attrs=["bold"])
     main_menu()
 
@@ -89,7 +89,7 @@ def game():
     guessed_words = []
     life = lives
     word_guessed = False
-
+    print("bums")
     cprint("\nLets Play!\n", "red", attrs=["bold"])
     cprint("If you want to quit at any point, you can enter 'exit' to go to the main menu.", "green", attrs=["bold"])
     cprint("Or 'restart' to restart the game with a new word.", "green", attrs=["bold"])
@@ -97,7 +97,7 @@ def game():
     """Used to print the games display."""
     def print_game():
         print(man[life])
-        print(f"The word is: {hidden_word}")
+        print(f"Your {len(word)} letter word is: {hidden_word}")
         print(f"\nYou have {life} guesses remaining.")
         if guesses:
             print(f"Letters you have guessed: {sorted(guesses)}")
@@ -107,7 +107,7 @@ def game():
     print_game()
 
     while life > 0 and not word_guessed:
-        guess = pyip.inputStr("Please guess a letter or a word:").upper()
+        guess = pyip.inputStr("Please guess a letter or a word:\n").upper()
 
         """Checks if the user entered one of the correct letters."""
         if len(guess) == 1 and guess.isalpha():
@@ -184,7 +184,7 @@ def restart():
     Or to quit to the menu, enter 3
     """)
 
-    num = pyip.inputInt("Please enter an option:", min=1, max=3)
+    num = pyip.inputInt("Please enter an option:\n", min=1, max=3)
     
     if num == 1:
         game()
