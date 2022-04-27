@@ -69,12 +69,19 @@ Other libraries used include:
 In review, I believe have met all of the goals that I initially set for this project and the user experience.
 
 I have provided difficulty options for the user to select from, with clear instructions on how to navigate the various menus and feedback returned for entry the user makes.
+
 ![Difficulty](/images/difficulty.png)
+
 I have given options for the user to control the game, being able to exit or restart when they please so that they aren't forced to play the game out to its end.
+
 ![Game](/images/game.png)
+
 I have created instructions to help new users and sorted their guesses alphabetically to make it easier to follow.
+
 ![Instructions](/images/instructions.png)
-I have moved frequently used code into its own functions and longs lists and graphics into seperate files to reduce the clutter of the program.
+
+I have moved frequently used code into its own functions and long lists and graphics into seperate files to reduce the clutter of the program.
+
 ![Print](/images/print.png)
 
 ## Bugs
