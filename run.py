@@ -33,9 +33,9 @@ Allows the user to select one of three difficulty options before returning them 
 def difficulty():
     cprint("\nSelect your difficulty!\n", "red", attrs=["bold"])
     cprint("""Please chose from one of the following options...\n
-    For Easy (10 Lives), enter 1
-    For Medium (7 Lives), enter 2
-    Or for Hard (5 Lives), enter 3
+    For Easy (12 Lives), enter 1
+    For Medium (10 Lives), enter 2
+    Or for Hard (7 Lives), enter 3
     """)
     num = pyip.inputInt("Please enter an option:\n", min=1, max=3)
     
