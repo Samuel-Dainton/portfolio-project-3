@@ -89,10 +89,8 @@ def game():
     guessed_words = []
     life = lives
     word_guessed = False
-    print("bums")
+    
     cprint("\nLets Play!\n", "red", attrs=["bold"])
-    cprint("If you want to quit at any point, you can enter 'exit' to go to the main menu.", "green", attrs=["bold"])
-    cprint("Or 'restart' to restart the game with a new word.", "green", attrs=["bold"])
     
     """Used to print the games display."""
     def print_game():
@@ -105,6 +103,8 @@ def game():
             print(f"Words you have guessed: {guessed_words}")
 
     print_game()
+    cprint("Lastly, if you want to quit at any point, you can enter 'exit' to go to the main menu.", "green", attrs=["bold"])
+    cprint("Or 'restart' to restart the game with a new word.", "green", attrs=["bold"])
 
     while life > 0 and not word_guessed:
         guess = pyip.inputStr("Please guess a letter or a word:\n").upper()
