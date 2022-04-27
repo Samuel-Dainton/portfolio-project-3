@@ -6,6 +6,7 @@ This is a python version of the very popular game Hangman. In this program the u
  
 The game first prints out the logo before taking the user to the main menu, from there they have 3 options to choose from which either lead to the game, difficulty settings or instructions. The difficulty screen allows the user to chose how many guess attempts they will have when starting the game. Both the difficulty and the instructions pages lead back to the main menu once the user is finished.
 The game itself starts by presenting the user with a board space that will be used to visualize the hangman diagram as they use up more of their guesses. Underneath that are the blank spaces that will gradually fill up as the user makes correct guesses on which letters might be in the hidden word.
+
 When the user makes an entry the program checks for multiple things that the user could have input.
 * These include:
     * Is it a letter?
@@ -20,7 +21,7 @@ The game ends when either the word has been guessed or the user has run out of a
  
 In order to make my project stand above just the code for checking words and drawing the hangman board I threw in ideas based on what I would want to see in the game as a player.
  
-As a player I would want.
+* As a player I would want.
     * The ability to change the difficulty.
     * Instructions incase I hadn't read the game before.
     * Clear prompts to instruct me on how to navigate the game.
