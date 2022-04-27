@@ -103,7 +103,7 @@ def game():
             print(f"Words you have guessed: {guessed_words}")
 
     print_game()
-    cprint("Lastly, if you want to quit at any point, you can enter 'exit' to go to the main menu.", "green", attrs=["bold"])
+    cprint("If you want to quit at any point, you can enter 'exit' to go to the menu.", "green", attrs=["bold"])
     cprint("Or 'restart' to restart the game with a new word.", "green", attrs=["bold"])
 
     while life > 0 and not word_guessed:
