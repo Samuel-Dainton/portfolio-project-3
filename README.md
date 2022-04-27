@@ -97,9 +97,9 @@ When entering word and letter guesses the user can also input spaces and tabs fo
  
 I have tested the code and the game logic by
  
-    * Passing the python code through the ![PEP8 validator](http://pep8online.com/) and solving any serious errors and warnings.
-    * Passing invalid and valid values while testing the game to check if the program responds as expected.
-    * Testing the game in gitpod terminal as well as Heroku terminal.
+* Passing the python code through the ![PEP8 validator](http://pep8online.com/) and solving any serious errors and warnings.
+* Passing invalid and valid values while testing the game to check if the program responds as expected.
+* Testing the game in gitpod terminal as well as Heroku terminal.
  
 ## Future Enhancements
  
